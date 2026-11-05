@@ -1,5 +1,7 @@
 import { Classement } from "./classement";
 
+const ANNONCES = ["Zéro", "Quinze", "Trente", "Quarante"];
+
 export class Jeu {
   private joueur1pts = 0;
 
@@ -14,9 +16,6 @@ export class Jeu {
   }
 
   score(): string {
-    if (this.joueur1pts === 1) {
-      return "Quinze-Zéro";
-    }
-    return "Zéro-Zéro";
+    return `${ANNONCES[this.joueur1pts]}-Zéro`;
   }
 }
