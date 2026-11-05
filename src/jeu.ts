@@ -19,8 +19,10 @@ export class Jeu {
     }
     if (joueur === this.joueur1) {
       this.joueur1pts++;
-    } else {
+    } else if (joueur === this.joueur2) {
       this.joueur2pts++;
+    } else {
+      throw new Error("Joueur invalide");
     }
   }
 
