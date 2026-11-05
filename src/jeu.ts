@@ -22,8 +22,9 @@ export class Jeu {
   }
 
   score(): string {
-    if (this.joueur1pts === POINTS_POUR_GAGNER) {
-      return `Victoire ${this.joueur1}`;
+    const vainqueur = this.vainqueur();
+    if (vainqueur) {
+      return `Victoire ${vainqueur}`;
     }
     if (this.joueur1pts === 3 && this.joueur2pts === 3) {
       return "Égalité";
@@ -32,5 +33,15 @@ export class Jeu {
       return `${ANNONCES[this.joueur1pts]}-A`;
     }
     return `${ANNONCES[this.joueur1pts]}-${ANNONCES[this.joueur2pts]}`;
+  }
+
+  private vainqueur(): string | undefined {
+    if (this.joueur1pts === POINTS_POUR_GAGNER) {
+      return this.joueur1;
+    }
+    if (this.joueur2pts === POINTS_POUR_GAGNER) {
+      return this.joueur2;
+    }
+    return undefined;
   }
 }
