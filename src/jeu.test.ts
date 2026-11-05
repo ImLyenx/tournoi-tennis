@@ -74,4 +74,26 @@ describe("Jeu", () => {
     marquer(jeu, "Alice", 4);
     expect(jeu.score()).toBe("Victoire Alice");
   });
+
+  it("J2 gagne s'il marque à 40", () => {
+    const jeu = new Jeu("Alice", "Bob", classement);
+    marquer(jeu, "Bob", 4);
+    expect(jeu.score()).toBe("Victoire Bob");
+  });
+
+  it("J1 gagne après égalité", () => {
+    const jeu = new Jeu("Alice", "Bob", classement);
+    marquer(jeu, "Alice", 3);
+    marquer(jeu, "Bob", 3);
+    jeu.pointPour("Alice");
+    expect(jeu.score()).toBe("Victoire Alice");
+  });
+
+  it("J2 gagne après égalité", () => {
+    const jeu = new Jeu("Alice", "Bob", classement);
+    marquer(jeu, "Alice", 3);
+    marquer(jeu, "Bob", 3);
+    jeu.pointPour("Bob");
+    expect(jeu.score()).toBe("Victoire Bob");
+  });
 });
