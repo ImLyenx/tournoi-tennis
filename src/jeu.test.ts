@@ -96,4 +96,11 @@ describe("Jeu", () => {
     jeu.pointPour("Bob");
     expect(jeu.score()).toBe("Victoire Bob");
   });
+
+  it("un point après la fin du match ne change plus le score", () => {
+    const jeu = new Jeu("Alice", "Bob", classement);
+    marquer(jeu, "Bob", 4);
+    marquer(jeu, "Alice", 4);
+    expect(jeu.score()).toBe("Victoire Bob");
+  });
 });
