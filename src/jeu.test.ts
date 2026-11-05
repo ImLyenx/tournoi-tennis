@@ -27,4 +27,10 @@ describe("Jeu", () => {
     marquer(jeu, "Alice", 2);
     expect(jeu.score()).toBe("Trente-Zéro");
   });
+
+  it("annonce 0-15 quand J2 marque", () => {
+    const jeu = new Jeu("Alice", "Bob", classement);
+    jeu.pointPour("Bob");
+    expect(jeu.score()).toBe("Zéro-Quinze");
+  });
 });
