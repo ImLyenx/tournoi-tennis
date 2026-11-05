@@ -14,6 +14,9 @@ export class Jeu {
   ) {}
 
   pointPour(joueur: string): void {
+    if (this.vainqueur()) {
+      return;
+    }
     if (joueur === this.joueur1) {
       this.joueur1pts++;
     } else {
