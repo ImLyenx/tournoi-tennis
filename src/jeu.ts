@@ -1,6 +1,7 @@
 import { Classement } from "./classement";
 
 const ANNONCES = ["Zéro", "Quinze", "Trente", "Quarante"];
+const POINTS_POUR_GAGNER = 4;
 
 export class Jeu {
   private joueur1pts = 0;
@@ -21,6 +22,9 @@ export class Jeu {
   }
 
   score(): string {
+    if (this.joueur1pts === POINTS_POUR_GAGNER) {
+      return `Victoire ${this.joueur1}`;
+    }
     if (this.joueur1pts === 3 && this.joueur2pts === 3) {
       return "Égalité";
     }
