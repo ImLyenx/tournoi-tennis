@@ -116,4 +116,29 @@ describe("Jeu", () => {
     marquer(jeu, "Alice", 4);
     expect(classementSpy.enregistrer).toHaveBeenCalledWith("Alice", "Bob");
   });
+
+  // spy: pareil qu'avant
+  it("enregistre J2 vainqueur en premier", () => {
+    const classementSpy = { enregistrer: vi.fn() };
+    const jeu = new Jeu("Alice", "Bob", classementSpy);
+    marquer(jeu, "Bob", 4);
+    expect(classementSpy.enregistrer).toHaveBeenCalledWith("Bob", "Alice");
+  });
+
+  // spy: ici on vérifie qu'il n'est jamais appelé avant la fin du match
+  it("n'enregistre rien avant la fin du match", () => {
+    const classementSpy = { enregistrer: vi.fn() };
+    const jeu = new Jeu("Alice", "Bob", classementSpy);
+    marquer(jeu, "Alice", 3);
+    marquer(jeu, "Bob", 3);
+    expect(classementSpy.enregistrer).not.toHaveBeenCalled();
+  });
+
+  // spy: pour s'assurer que la fonction est bien appelée une et une seule fois
+  it("enregistre une seule fois", () => {
+    const classementSpy = { enregistrer: vi.fn() };
+    const jeu = new Jeu("Alice", "Bob", classementSpy);
+    marquer(jeu, "Alice", 6);
+    expect(classementSpy.enregistrer).toHaveBeenCalledTimes(1);
+  });
 });
