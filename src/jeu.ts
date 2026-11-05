@@ -21,6 +21,9 @@ export class Jeu {
   }
 
   score(): string {
+    if (this.joueur1pts === this.joueur2pts && this.joueur1pts > 0) {
+      return `${ANNONCES[this.joueur1pts]}-A`;
+    }
     return `${ANNONCES[this.joueur1pts]}-${ANNONCES[this.joueur2pts]}`;
   }
 }
