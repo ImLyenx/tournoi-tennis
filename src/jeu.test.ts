@@ -61,4 +61,11 @@ describe("Jeu", () => {
     marquer(jeu, "Bob", 2);
     expect(jeu.score()).toBe("Trente-A");
   });
+
+  it("annonce égalité à 40-40", () => {
+    const jeu = new Jeu("Alice", "Bob", classement);
+    marquer(jeu, "Alice", 3);
+    marquer(jeu, "Bob", 3);
+    expect(jeu.score()).toBe("Égalité");
+  });
 });
