@@ -24,8 +24,10 @@ export class Jeu {
     } else {
       throw new Error("Joueur invalide");
     }
-    if (this.joueur1pts === POINTS_POUR_GAGNER) {
-      this.classement.enregistrer(this.joueur1, this.joueur2);
+    const vainqueur = this.vainqueur();
+    if (vainqueur) {
+      const perdant = vainqueur === this.joueur1 ? this.joueur2 : this.joueur1;
+      this.classement.enregistrer(vainqueur, perdant);
     }
   }
 
