@@ -24,6 +24,9 @@ export class Jeu {
     } else {
       throw new Error("Joueur invalide");
     }
+    if (this.joueur1pts === POINTS_POUR_GAGNER) {
+      this.classement.enregistrer(this.joueur1, this.joueur2);
+    }
   }
 
   score(): string {
