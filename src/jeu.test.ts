@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { Jeu } from "./jeu";
 
 // dummy: il faut juste remplir les parametres de création du jeu, donc un faux classement qui n'est jamais appelé suffit
@@ -107,5 +107,13 @@ describe("Jeu", () => {
   it("refuse un joueur inconnu", () => {
     const jeu = new Jeu("Alice", "Bob", classement);
     expect(() => jeu.pointPour("Charlie")).toThrow("Joueur invalide");
+  });
+
+  // spy: on veut juste vérifier que la fonction "enregistrer" a été appelée avec Alice en premier
+  it("enregistre J1 vainqueur en premier", () => {
+    const classementSpy = { enregistrer: vi.fn() };
+    const jeu = new Jeu("Alice", "Bob", classementSpy);
+    marquer(jeu, "Alice", 4);
+    expect(classementSpy.enregistrer).toHaveBeenCalledWith("Alice", "Bob");
   });
 });
