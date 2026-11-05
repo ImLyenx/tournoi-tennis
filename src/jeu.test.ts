@@ -68,4 +68,10 @@ describe("Jeu", () => {
     marquer(jeu, "Bob", 3);
     expect(jeu.score()).toBe("Égalité");
   });
+
+  it("J1 gagne s'il marque à 40", () => {
+    const jeu = new Jeu("Alice", "Bob", classement);
+    marquer(jeu, "Alice", 4);
+    expect(jeu.score()).toBe("Victoire Alice");
+  });
 });
