@@ -11,6 +11,6 @@ export class Jeu {
   }
 
   score(): string {
-    return "";
+    return "Zéro-Zéro";
   }
 }
