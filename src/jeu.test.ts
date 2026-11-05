@@ -103,4 +103,9 @@ describe("Jeu", () => {
     marquer(jeu, "Alice", 4);
     expect(jeu.score()).toBe("Victoire Bob");
   });
+
+  it("refuse un joueur inconnu", () => {
+    const jeu = new Jeu("Alice", "Bob", classement);
+    expect(() => jeu.pointPour("Charlie")).toThrow("Joueur invalide");
+  });
 });
